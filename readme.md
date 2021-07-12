@@ -17,6 +17,8 @@ Matlab needs to be pre-installed.
 	See the wiki for a more detailed how-to (https://github.com/timotheelionnet/sortSpots/wiki)
 
 3. License
+example data from Benjamin King
+
 Copyright (c) 2021, Timothee Lionnet
 All rights reserved.
 
