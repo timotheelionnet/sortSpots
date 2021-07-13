@@ -260,32 +260,32 @@ for i=1:size(fList,1)
         fprintf(fid1,'%s\r\n',strmode,str);
         if isempty(spots)
             for k = 1:nROIs
-                nSpotsInCurrentRoi = 0;
+                nSpotsInCurrentROI = 0;
                 integratedIntPerROI{i,j}(k,1) = 0;
-                nSpotsPerRoi{i,j}(k,1) = 0;
-                curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
-                roiVolume{i,j}(k,1) = curRoiVolume;
+                nspotsPerROI{i,j}(k,1) = 0;
+                cur_ROI_volume = sum( mask(:) == roiVals{i,j}(k,1) );
+                ROI_volume{i,j}(k,1) = cur_ROI_volume;
                 str = ['ROI value: ',num2str(roiVals{i,j}(k,1)),'; ',...
-                    num2str(nSpotsInCurrentRoi),...
+                    num2str(nspots_in_current_ROI),...
                     ' spots detected; ROI volume: ',...
-                    num2str(curRoiVolume),' voxels'];
+                    num2str(cur_ROI_volume),' voxels'];
                 fprintf(fid1,'%s\r\n',str);
             end
         else
             for k = 1:nROIs
-                nSpotsInCurrentRoi = ...
+                nspots_in_current_ROI = ...
                     sum( spots2(:,nc+1) == roiVals{i,j}(k,1) );
-                integratedIntPerRoi{i,j}(k,1) = ...
+                integratedIntPerROI{i,j}(k,1) = ...
                     sum( spots2( spots2(:,nc+1) == ...
                     roiVals{i,j}(k,1),params.ndims+1 ) );
-                nSpotsPerRoi{i,j}(k,1) = nSpotsInCurrentRoi;
-                curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
-                roiVolume{i,j}(k,1) = curRoiVolume;
+                nspotsPerROI{i,j}(k,1) = nspots_in_current_ROI;
+                cur_ROI_volume = sum( mask(:) == roiVals{i,j}(k,1) );
+                ROI_volume{i,j}(k,1) = cur_ROI_volume;
 
                 str = ['ROI value: ',num2str(roiVals{i,j}(k,1)),'; ',...
-                    num2str(nSpotsInCurrentRoi),...
+                    num2str(nspots_in_current_ROI),...
                     ' spots detected; ROI volume: ',...
-                    num2str(curRoiVolume),' voxels'];
+                    num2str(cur_ROI_volume),' voxels'];
                 fprintf(fid1,'%s\r\n',str);
             end
         end  
@@ -296,7 +296,7 @@ end
 %save global stats to text file (legacy format, include all names of files used for each channel)
 saveFileName = fullfile(outDir,'sortSpotsStats.txt');
 T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
-    nSpotsPerROI,integratedIntPerRoi,roiVolume);
+    nspots_per_ROI,integratedIntPerROI,ROI_volume);
 
 % save as a cell expression matrix (easier to use in downstream applications)
 saveFileName = fullfile(outDir,'sortSpotsMatrix.txt');

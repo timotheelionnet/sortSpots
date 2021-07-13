@@ -1,0 +1,13 @@
+Detection file: /Users/lionnt01/Documents/GitHub/sortSpots/examples/C2-SlideF_Left_Control_State3 #2.loc4
+Mask File: /Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+
+Mode: discard background spots
+
+Total Number of Spots in Image: 136
+ROI value: 36; 31 spots detected; ROI volume: 125099 voxels
+ROI value: 73; 21 spots detected; ROI volume: 118277 voxels
+ROI value: 109; 6 spots detected; ROI volume: 62406 voxels
+ROI value: 146; 24 spots detected; ROI volume: 89634 voxels
+ROI value: 182; 6 spots detected; ROI volume: 57841 voxels
+ROI value: 219; 25 spots detected; ROI volume: 125225 voxels
+ROI value: 255; 4 spots detected; ROI volume: 53140 voxels
