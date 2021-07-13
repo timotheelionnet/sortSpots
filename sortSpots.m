@@ -75,14 +75,14 @@ else
     %GUI-based file paths input
     allChannelsFilled = 0;
     nChannels = 0;
+    defaultLocExt = {'*','all files'};
     while ~allChannelsFilled
         if nChannels >=1
             cd(dirName{1});
         end
         curFileName = uipickfiles('Prompt',...
             ['Load First Detection result for Channel ',num2str(nChannels+1)],...
-            'Type',...
-            {'*.loc4','loc4 files'; '*.loc3','loc3 files';'*.loc','loc files'},...
+            'Type',defaultLocExt,...
             'Output','cell');
         if ~isa(curFileName,'cell')
             allChannelsFilled = 1;
@@ -147,8 +147,9 @@ if params.BatchMode == 1
     end
     
     % match file names sharing the same base across channels
-    fList = assemble_multiple_file_lists2(listing,prefix,suffix);
-    
+    fList = assemble_multiple_file_lists2(listing,prefix,suffix)
+    prefix
+    suffix
     disp(['Found ',num2str(size(fList,1)),' files']);
 else
     for i=1:nChannels

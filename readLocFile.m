@@ -11,7 +11,13 @@ function [loc,header] = readLocFile(fname)
         header = loc.Properties.VariableNames;
         loc = table2array(loc);
     else
-        loc = load(fname);
-        header = {};
+        try 
+            loc = load(fname);
+            header = {};
+        catch
+            loc = readtable(fname,'FileType','text','Delimiter','\t');
+            header = loc.Properties.VariableNames;
+            loc = table2array(loc);
+        end
     end
 end
