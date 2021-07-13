@@ -296,7 +296,7 @@ end
 %save global stats to text file (legacy format, include all names of files used for each channel)
 saveFileName = fullfile(outDir,'sortSpotsStats.txt');
 T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
-    nSpotsPerROI,integratedIntPerRoi,roiVolume);
+    nSpotsPerRoi,integratedIntPerRoi,roiVolume);
 
 % save as a cell expression matrix (easier to use in downstream applications)
 saveFileName = fullfile(outDir,'sortSpotsMatrix.txt');
