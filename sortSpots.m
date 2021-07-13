@@ -155,7 +155,7 @@ else
         fList{1,i} = locFileName{i};
     end
     fList{1,nChannels+1} = maskFileName;
-    disp('Progress','Loading files');
+    disp('Loading files');
 end
        
 %% sort spots
@@ -300,6 +300,12 @@ T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
 
 % save as a cell expression matrix (easier to use in downstream applications)
 saveFileName = fullfile(outDir,'sortSpotsMatrix.txt');
+
+% dummy prefix/suffix if single file mode.
+if params.BatchMode ~= 1
+    prefix = repmat({''},1,nChannels+1);
+    suffix = repmat({''},1,nChannels+1);
+end
 save_batch_sort_spots_results_as_Matrix(saveFileName,T,prefix,suffix);
 
 % return current dir and path to its previous state if needed
