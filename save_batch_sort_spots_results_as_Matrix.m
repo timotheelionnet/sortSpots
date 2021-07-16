@@ -33,7 +33,7 @@ end
 v2 = [v(1:idx-1),channelVars,v(idx+1:end)];
 
 % omit variable that stores the file name for each channel
-v2 = v2(~ismember(v2,{'filename','num_spots','integrated_spotInt'}));
+v2 = v2(~ismember(v2,{'fileName','num_spots','integrated_spotInt'}));
 
 % create variable types
 v2Types = [repmat({'double'},1,(numel(v2)-1)),{'string'}];
@@ -43,7 +43,7 @@ v2Types = [repmat({'double'},1,(numel(v2)-1)),{'string'}];
 tOut = table('Size',[0, numel(v2)],'VariableNames',v2,'variableTypes',v2Types);
 
 % collect a list of unique image (FOV_ID) and ROIs (ROI_ID) IDs in the dataset.
-t2 = t(:,~ismember(v,{'filename','num_spots','channel','integrated_spotInt'}));
+t2 = t(:,~ismember(v,{'fileName','num_spots','channel','integrated_spotInt'}));
 r = unique(t2,'rows');
 
 % turning off warnings otherwise we get one every line added to the table

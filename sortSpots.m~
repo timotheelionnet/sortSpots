@@ -1,4 +1,5 @@
-function [fList,nspots_per_ROI,roiVals,integrated_Int_per_ROI,ROI_volume] = batch_sort_spots_using_masks7()
+function [fList,nSpotsPerRoi,roiVals,integratedIntPerRoi,roiVolume] = sortSpots()
+
 %input one to three spot detection results files, plus one image that
 %contains masks
 
@@ -75,14 +76,14 @@ else
     %GUI-based file paths input
     allChannelsFilled = 0;
     nChannels = 0;
+    defaultLocExt = {'*','all files'};
     while ~allChannelsFilled
         if nChannels >=1
             cd(dirName{1});
         end
         curFileName = uipickfiles('Prompt',...
             ['Load First Detection result for Channel ',num2str(nChannels+1)],...
-            'Type',...
-            {'*.loc4','loc4 files'; '*.loc3','loc3 files';'*.loc','loc files'},...
+            'Type',defaultLocExt,...
             'Output','cell');
         if ~isa(curFileName,'cell')
             allChannelsFilled = 1;
@@ -147,15 +148,16 @@ if params.BatchMode == 1
     end
     
     % match file names sharing the same base across channels
-    fList = assemble_multiple_file_lists2(listing,prefix,suffix);
-    
+    fList = assemble_multiple_file_lists2(listing,prefix,suffix)
+    prefix
+    suffix
     disp(['Found ',num2str(size(fList,1)),' files']);
 else
     for i=1:nChannels
         fList{1,i} = locFileName{i};
     end
     fList{1,nChannels+1} = maskFileName;
-    disp('Progress','Loading files');
+    disp('Loading files');
 end
        
 %% sort spots
@@ -185,7 +187,7 @@ for i=1:size(fList,1)
     
     for j = 1:nChannels
         %load detected spots
-        [spots,header] = readLocFile(fList{i,j});
+        [spots,header] = readLocFile(fList{i,j})
         
         if isempty(spots)
             spots2 = spots;
@@ -220,7 +222,7 @@ for i=1:size(fList,1)
 
             %excluding background spots if the remove background mode is selected
             if strcmp(params.mode,'discard bg')
-                spots2 = spots2(spots2(:,nc+1) ~= min( mask(:) ),:);
+                spots2 = spots2(spots2(:,nc+1) ~= min( mask(:) ),:)
             end
         end
         
@@ -232,7 +234,12 @@ for i=1:size(fList,1)
         else
             fout = fullfile(outDir,[fnameNoExt,'_mask_sorted.loc4']);
             header = [header,'RoiID'];
-            t = array2table(spots2,'VariableNames',header);
+            if isempty(spots2)
+                t = table('Size',[0, numel(header)],'VariableNames',header,...
+                    'variableTypes',repmat({'double'},1,numel(header)));
+            else
+                t = array2table(spots2,'VariableNames',header);
+            end
             writetable(t,fout,'Delimiter','\t','FileType','text');
         end
         
@@ -258,34 +265,37 @@ for i=1:size(fList,1)
 
         str = ['Total Number of Spots in Image: ',num2str(size(spots,1)) ];
         fprintf(fid1,'%s\r\n',strmode,str);
-        if isempty(spots)
+        integratedIntPerRoi{i,j} = zeros(nRois,1);
+        nSpotsPerRoi{i,j} = zeros(nRois,1);
+        roiVolume{i,j} = zeros(nRois,1);
+        if isempty(spots2)
             for k = 1:nROIs
-                nSpotsInCurrentROI = 0;
-                integratedIntPerROI{i,j}(k,1) = 0;
-                nspotsPerROI{i,j}(k,1) = 0;
-                cur_ROI_volume = sum( mask(:) == roiVals{i,j}(k,1) );
-                ROI_volume{i,j}(k,1) = cur_ROI_volume;
+                nSpotsInCurrentRoi = 0;
+                integratedIntPerRoi{i,j}(k,1) = 0;
+                nSpotsPerRoi{i,j}(k,1) = 0;
+                curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
+                roiVolume{i,j}(k,1) = curRoiVolume;
                 str = ['ROI value: ',num2str(roiVals{i,j}(k,1)),'; ',...
-                    num2str(nspots_in_current_ROI),...
+                    num2str(nSpotsInCurrentRoi),...
                     ' spots detected; ROI volume: ',...
-                    num2str(cur_ROI_volume),' voxels'];
+                    num2str(curRoiVolume),' voxels'];
                 fprintf(fid1,'%s\r\n',str);
             end
         else
             for k = 1:nROIs
-                nspots_in_current_ROI = ...
+                nSpotsInCurrentRoi = ...
                     sum( spots2(:,nc+1) == roiVals{i,j}(k,1) );
-                integratedIntPerROI{i,j}(k,1) = ...
+                integratedIntPerRoi{i,j}(k,1) = ...
                     sum( spots2( spots2(:,nc+1) == ...
                     roiVals{i,j}(k,1),params.ndims+1 ) );
-                nspotsPerROI{i,j}(k,1) = nspots_in_current_ROI;
-                cur_ROI_volume = sum( mask(:) == roiVals{i,j}(k,1) );
-                ROI_volume{i,j}(k,1) = cur_ROI_volume;
+                nSpotsPerRoi{i,j}(k,1) = nSpotsInCurrentRoi;
+                curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
+                roiVolume{i,j}(k,1) = curRoiVolume;
 
                 str = ['ROI value: ',num2str(roiVals{i,j}(k,1)),'; ',...
-                    num2str(nspots_in_current_ROI),...
+                    num2str(nSpotsInCurrentRoi),...
                     ' spots detected; ROI volume: ',...
-                    num2str(cur_ROI_volume),' voxels'];
+                    num2str(curRoiVolume),' voxels'];
                 fprintf(fid1,'%s\r\n',str);
             end
         end  
@@ -295,11 +305,18 @@ end
 
 %save global stats to text file (legacy format, include all names of files used for each channel)
 saveFileName = fullfile(outDir,'sortSpotsStats.txt');
+
 T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
-    nspots_per_ROI,integratedIntPerROI,ROI_volume);
+    nSpotsPerRoi,integratedIntPerRoi,roiVolume);
 
 % save as a cell expression matrix (easier to use in downstream applications)
 saveFileName = fullfile(outDir,'sortSpotsMatrix.txt');
+
+% dummy prefix/suffix if single file mode.
+if params.BatchMode ~= 1
+    prefix = repmat({''},1,nChannels+1);
+    suffix = repmat({''},1,nChannels+1);
+end
 save_batch_sort_spots_results_as_Matrix(saveFileName,T,prefix,suffix);
 
 % return current dir and path to its previous state if needed

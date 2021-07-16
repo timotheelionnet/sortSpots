@@ -1,4 +1,5 @@
-function [fList,nspots_per_ROI,roiVals,integrated_Int_per_ROI,ROI_volume] = batch_sort_spots_using_masks7()
+function [fList,nSpotsPerRoi,roiVals,integratedIntPerRoi,roiVolume] = sortSpots()
+
 %input one to three spot detection results files, plus one image that
 %contains masks
 
@@ -233,13 +234,18 @@ for i=1:size(fList,1)
         else
             fout = fullfile(outDir,[fnameNoExt,'_mask_sorted.loc4']);
             header = [header,'RoiID'];
-            t = array2table(spots2,'VariableNames',header);
+            if isempty(spots2)
+                t = table('Size',[0, numel(header)],'VariableNames',header,...
+                    'variableTypes',repmat({'double'},1,numel(header)));
+            else
+                t = array2table(spots2,'VariableNames',header);
+            end
             writetable(t,fout,'Delimiter','\t','FileType','text');
         end
         
         %generating the file that holds the stats
         roiVals{i,j} = roiVals{i,1}; %replicate mask ROI identities
-        nROIs = numel(roiVals{i,j});
+        nRois = numel(roiVals{i,j});
 
         NL = sprintf('\r\n');
         summaryFilename = fullfile(outDir,[fnameNoExt,'_mask.sum']);
@@ -259,10 +265,13 @@ for i=1:size(fList,1)
 
         str = ['Total Number of Spots in Image: ',num2str(size(spots,1)) ];
         fprintf(fid1,'%s\r\n',strmode,str);
-        if isempty(spots)
-            for k = 1:nROIs
+        integratedIntPerRoi{i,j} = zeros(nRois,1);
+        nSpotsPerRoi{i,j} = zeros(nRois,1);
+        roiVolume{i,j} = zeros(nRois,1);
+        if isempty(spots2)
+            for k = 1:nRois
                 nSpotsInCurrentRoi = 0;
-                integratedIntPerROI{i,j}(k,1) = 0;
+                integratedIntPerRoi{i,j}(k,1) = 0;
                 nSpotsPerRoi{i,j}(k,1) = 0;
                 curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
                 roiVolume{i,j}(k,1) = curRoiVolume;
@@ -273,7 +282,7 @@ for i=1:size(fList,1)
                 fprintf(fid1,'%s\r\n',str);
             end
         else
-            for k = 1:nROIs
+            for k = 1:nRois
                 nSpotsInCurrentRoi = ...
                     sum( spots2(:,nc+1) == roiVals{i,j}(k,1) );
                 integratedIntPerRoi{i,j}(k,1) = ...
@@ -296,6 +305,7 @@ end
 
 %save global stats to text file (legacy format, include all names of files used for each channel)
 saveFileName = fullfile(outDir,'sortSpotsStats.txt');
+
 T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
     nSpotsPerRoi,integratedIntPerRoi,roiVolume);
 

@@ -1,29 +1,29 @@
 function T = save_batch_sort_spots_results_in_txt(...
     saveFileName,analysisFileList,RoiVals,nSpotsPerRoi,...
-    integratedIntPerRoi,ROI_Volume)
+    integratedIntPerRoi,RoiVolume)
 
 %save sorting results summary to a tab delimited file 
 %(useful for batch results)
 %inputs: 
 
-%saveFileName: a filename where the results will be saved
+%save_filename: a filename where the results will be saved
 
-%analysisFileList: a [nimg,nchannels+1] list of files. last column
+%analysis_filelist: a [nimg,nchannels+1] list of files. last column
 %corresponds to the masks filenames; nimg is the number of files analyzed,
 %nchannels the number of channels analyzed.
 
-%RoiVals: a cell array that lists all ROI ID values for each image. 
+%ROI_vals: a cell array that lists all ROI ID values for each image. 
 %its size is [nimg,1] where nimg is the number of files analyzed. Each
 %entry is an a column array of ID values
 
-%nSpotsPerRoi: a cell array that lists the number of spots 
+%nspots_per_ROI: a cell array that lists the number of spots 
 %in each analyzed channel in each ROI in each image. 
 %its size is [nimg,nchannels] where nimg is the number of files analyzed 
 %and nchannels the number of channels analyzed. 
 %Each entry is an a column array of spot numbers. 
 %order matches that of the ID values arrays.
 
-%RoiVolume: a cell array that lists the volume encompassed 
+%ROI_volume: a cell array that lists the volume encompassed 
 %by distinct ROIs for each image. 
 %its size is [nimg,1] where nimg is the number of files analyzed. Each
 %entry is an a column array of volume values. order matches that of the ID
@@ -41,7 +41,7 @@ function T = save_batch_sort_spots_results_in_txt(...
 %group of 3 columns: ID, number of spots, volumes
 
 %safety checks
-nimg = size(ROI_Volume,1);
+nimg = size(RoiVolume,1);
 nchannels = size(nSpotsPerRoi,2);
 if size(nSpotsPerRoi,1) ~= nimg
     dispwin('input error','inconsistent input sizes, cannot save to txt file');
@@ -57,53 +57,60 @@ for j=1:size(RoiVals,1) %loop through FOVs
 end
 
 ROI_ID = cell2mat(RoiVals(:,1));
-ROI_Volume = cell2mat(ROI_Volume(:,1));
+RoiVolume = cell2mat(RoiVolume(:,1));
 
 num_spots = [];
 integrated_spotInt = [];
 channel = [];
-fileName = [];
-maskFileName = [];
+filename = [];
+mask_filename = [];
 for i=1:nchannels
-    curNSpotsPerRoi = cell2mat(nSpotsPerRoi(:,i));
+    cur_nspots_per_ROI = cell2mat(nSpotsPerRoi(:,i))
     num_spots = [num_spots;...
-        curNSpotsPerRoi];
+        cur_nspots_per_ROI];
 
-    curIntegratedSpotInt = cell2mat(integratedIntPerRoi(:,i));
+    cur_integrated_spotInt = cell2mat(integratedIntPerRoi(:,i));
     integrated_spotInt = [integrated_spotInt;...
-        curIntegratedSpotInt];
+        cur_integrated_spotInt];
     
     channel = [channel;...
-        i*ones(size(curNSpotsPerRoi))];
+        i*ones(size(cur_nspots_per_ROI))];
     
-    curFileName = [];
+    curfilename = [];
     for j=1:size(analysisFileList,1)
-        curFileName = [curFileName; ...
+        curfilename = [curfilename; ...
             repmat(analysisFileList(j,i),size(RoiVals{j,1}))];
     end
     
-    fileName = [fileName;...
-        curFileName];
+    filename = [filename;...
+        curfilename];
     
-    curMaskName = [];
+    curmaskname = [];
     for j=1:size(analysisFileList,1)
-        curMaskName = [curMaskName; ...
+        curmaskname = [curmaskname; ...
             repmat(analysisFileList(j,end),size(RoiVals{j,1}))];
     end
     
-    maskFileName = [maskFileName;...
-        curMaskName];
+    mask_filename = [mask_filename;...
+        curmaskname];
 
 end
 
 FOV_ID = repmat(FOV_ID,nchannels,1);
 ROI_ID = repmat(ROI_ID,nchannels,1);
-ROI_Volume = repmat(ROI_Volume,nchannels,1);
-
+RoiVolume = repmat(RoiVolume,nchannels,1);
+size(FOV_ID)
+size(ROI_ID)
+size(num_spots)
+size(integrated_spotInt)
+size(RoiVolume)
+size(channel)
+size(filename)
+size(mask_filename)
 
 %write data
 T = table(FOV_ID,ROI_ID,num_spots,integrated_spotInt,...
-    ROI_Volume,channel,fileName,maskFileName);
+    RoiVolume,channel,filename,mask_filename);
 
 writetable(T,saveFileName,'Delimiter','\t');
 
