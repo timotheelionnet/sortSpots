@@ -1,0 +1,18 @@
+FOV_ID	ROI_ID	ROI_volume	ch01_C2__	ch02_C3__	ch03_C4__	ch04_C5__	mask_filename
+1	26	19826	5	57	33	4	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	51	62893	19	136	140	8	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	76	48160	6	82	75	6	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	102	79968	21	150	180	11	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	128	63058	6	127	125	12	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	153	78003	12	197	157	10	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	178	84309	14	142	143	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	204	98123	19	197	144	71	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	230	77715	9	186	138	36	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	255	77501	17	170	171	13	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+2	36	125099	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	73	118277	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	109	62406	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	146	89634	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	182	57841	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	219	125225	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	255	53140	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
