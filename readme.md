@@ -7,7 +7,7 @@ Matlab needs to be pre-installed.
 	- download the sortSpots folder containing the code from GitHub to your computer.
 	- either add the sortSpots folder (including its subfolders) to Matlab's path: 
 		On Matlab's Home tab, in the Environment section, click 'Set Path'. 
-		Click 'Add with subfolders' and select the AIRLOCALIZE folder.
+		Click 'Add with subfolders' and select the sortSpots folder.
 		(see https://www.mathworks.com/help/matlab/matlab_env/add-remove-or-reorder-folders-on-the-search-path.html)
         - or navigate to make the sortSpots folder your current Folder in the Matlab command window.
 	
