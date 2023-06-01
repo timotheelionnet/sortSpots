@@ -325,6 +325,7 @@ if ~onPath
     rmpath(startFolder);
 end
 cd(startFolder);
+disp('Done.');
 end
 
 function params = set_sorting_mode()
