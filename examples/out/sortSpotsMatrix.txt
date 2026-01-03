@@ -1,18 +1,69 @@
-FOV_ID	ROI_ID	ROI_volume	ch01_C2__	ch02_C3__	ch03_C4__	ch04_C5__	mask_filename
-1	26	19826	5	57	33	4	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	51	62893	19	136	140	8	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	76	48160	6	82	75	6	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	102	79968	21	150	180	11	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	128	63058	6	127	125	12	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	153	78003	12	197	157	10	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	178	84309	14	142	143	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	204	98123	19	197	144	71	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	230	77715	9	186	138	36	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-1	255	77501	17	170	171	13	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
-2	36	125099	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	73	118277	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	109	62406	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	146	89634	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	182	57841	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	219	125225	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
-2	255	53140	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+FOV_ID	ROI_ID	max_spotInt	ROI_Volume	ch01_C2__	ch02_C3__	ch03_C4__	ch04_C5__	maskFileName
+1	26	467003.912914599	19826	5	57	33	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	51	546728.949947158	62893	5	57	33	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	76	555584.036244544	48160	5	57	33	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	102	791644.768415022	79968	5	57	33	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	128	679624.593625035	63058	19	136	140	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	153	742411.85114114	78003	19	136	140	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	178	844381.14950747	84309	19	136	140	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	204	882243.562987063	98123	19	136	140	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	230	785618.919092177	77715	6	82	75	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	255	715745.671339415	77501	6	82	75	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+2	36	1293216.17781143	125099	6	82	75	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	73	764087.87597648	118277	6	82	75	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	109	709887.725981261	62406	21	150	180	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	146	742931.707854176	89634	21	150	180	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	182	702544.993964205	57841	21	150	180	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	219	824675.048781606	125225	21	150	180	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	255	356265.769477739	53140	6	127	125	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+1	26	945058.131048418	19826	6	127	125	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	51	864505.044070831	62893	6	127	125	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	76	1034366.9052996	48160	6	127	125	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	102	1163137.78460918	79968	12	197	157	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	128	898490.03333764	63058	12	197	157	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	153	1112109.3461517	78003	12	197	157	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	178	1214302.51596568	84309	12	197	157	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	204	848687.372745483	98123	14	142	143	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	230	989307.760360849	77715	14	142	143	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	255	1003929.51742552	77501	14	142	143	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+2	36	1707375.29806109	125099	14	142	143	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	73	1295407.3196488	118277	19	197	144	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	109	1061920.1730987	62406	19	197	144	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	146	1361497.47651248	89634	19	197	144	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	182	940558.484776949	57841	19	197	144	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	219	1677008.57045578	125225	9	186	138	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	255	1121837.97613308	53140	9	186	138	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+1	26	510833.663230369	19826	9	186	138	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	51	809307.149544325	62893	9	186	138	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	76	756612.204314409	48160	17	170	171	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	102	764436.706420889	79968	17	170	171	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	128	655398.932981111	63058	17	170	171	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	153	756887.170088125	78003	17	170	171	0	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	178	640824.472860529	84309	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	204	741517.520742851	98123	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	230	2006065.35324727	77715	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	255	763573.371053624	77501	31	168	149	30	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+2	36	696852.736400199	125099	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	73	826185.409222176	118277	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	109	598951.301015906	62406	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	146	746882.316326648	89634	21	123	156	17	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	182	703696.740925523	57841	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	219	672936.08861121	125225	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	255	900975.809151324	53140	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+1	26	0	19826	6	110	109	24	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	51	0	62893	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	76	0	48160	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	102	0	79968	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	128	0	63058	24	311	126	129	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	153	0	78003	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	178	0	84309	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	204	0	98123	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	230	0	77715	6	117	93	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+1	255	0	77501	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #1med_cells.tiff
+2	36	1030823.45995019	125099	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	73	973064.598478211	118277	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	109	2435822.16397118	62406	25	286	126	102	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	146	1201119.38964778	89634	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	182	1812604.38709131	57841	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	219	1263530.98490213	125225	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff
+2	255	1071091.17463799	53140	4	134	78	26	/Users/lionnt01/Documents/GitHub/sortSpots/examples/C9_SlideF_Left_Control_State3 #2med_cells.tiff

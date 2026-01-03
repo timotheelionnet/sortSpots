@@ -1,6 +1,6 @@
 function T = save_batch_sort_spots_results_in_txt(...
     saveFileName,analysisFileList,RoiVals,nSpotsPerRoi,...
-    integratedIntPerRoi,ROI_Volume)
+    integratedIntPerRoi,maxIntPerRoi,ROI_Volume)
 
 %save sorting results summary to a tab delimited file 
 %(useful for batch results)
@@ -23,6 +23,16 @@ function T = save_batch_sort_spots_results_in_txt(...
 %Each entry is an a column array of spot numbers. 
 %order matches that of the ID values arrays.
 
+% integratedIntPerRoi: cell array that lists the sum of the intensities of
+% all the spots in each analyzed channel in each ROI in each image. 
+%its size is [nimg,nchannels] where nimg is the number of files analyzed 
+%and nchannels the number of channels analyzed. 
+%Each entry is an a column array of spot numbers. 
+%order matches that of the ID values arrays.
+
+% maxIntPerRoi same as integratedIntPerRoi, except it stores the max
+% intensity of all the spots in the ROI.
+
 %RoiVolume: a cell array that lists the volume encompassed 
 %by distinct ROIs for each image. 
 %its size is [nimg,1] where nimg is the number of files analyzed. Each
@@ -34,8 +44,9 @@ function T = save_batch_sort_spots_results_in_txt(...
 %each sheet lists the filename for the detected spot and the masks in the first 2
 %columns. then an extra column for the number of the FOV
 %'vertical' format:
-%ROI are listed vertically: one column for ID, one for number of spots, one
-%for ROI volume.
+%ROI are listed vertically: one column for ID, one for number of spots, o
+% one for integrated intensity, one for max intensity,
+% onefor ROI volume, one for channel, one for fileName, one for maskFileName.
 %'horizontal' format:
 %ROIs are listed horizontally, one row per FOV, each ROI is assigned a
 %group of 3 columns: ID, number of spots, volumes
@@ -61,6 +72,7 @@ ROI_Volume = cell2mat(ROI_Volume(:,1));
 
 num_spots = [];
 integrated_spotInt = [];
+max_spotInt = [];
 channel = [];
 fileName = [];
 maskFileName = [];
@@ -72,6 +84,10 @@ for i=1:nchannels
     curIntegratedSpotInt = cell2mat(integratedIntPerRoi(:,i));
     integrated_spotInt = [integrated_spotInt;...
         curIntegratedSpotInt];
+    
+    curMaxSpotInt = cell2mat(maxIntPerRoi(:,i));
+    max_spotInt = [max_spotInt;...
+        curMaxSpotInt];
     
     channel = [channel;...
         i*ones(size(curNSpotsPerRoi))];
@@ -102,7 +118,7 @@ ROI_Volume = repmat(ROI_Volume,nchannels,1);
 
 
 %write data
-T = table(FOV_ID,ROI_ID,num_spots,integrated_spotInt,...
+T = table(FOV_ID,ROI_ID,num_spots,integrated_spotInt,max_spotInt,...
     ROI_Volume,channel,fileName,maskFileName);
 
 writetable(T,saveFileName,'Delimiter','\t');

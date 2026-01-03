@@ -13,6 +13,8 @@ function [fList,nSpotsPerRoi,roiVals,integratedIntPerRoi,roiVolume] = sortSpots(
 %that background spots were discarded from summary file if option selected.
 %version 6.0: added a 2D/3D option to select which column is taken into
 %account for the intensity quantification.
+% version 7.0 added the max spot intensity in each ROI to the summary
+% stats.
 
 %% set matlab path to include necessary subfunctions
 %with platform dependent path names
@@ -266,12 +268,14 @@ for i=1:size(fList,1)
         str = ['Total Number of Spots in Image: ',num2str(size(spots,1)) ];
         fprintf(fid1,'%s\r\n',strmode,str);
         integratedIntPerRoi{i,j} = zeros(nRois,1);
+        maxIntPerRoi{i,j} = zeros(nRois,1);
         nSpotsPerRoi{i,j} = zeros(nRois,1);
         roiVolume{i,j} = zeros(nRois,1);
         if isempty(spots2)
             for k = 1:nRois
                 nSpotsInCurrentRoi = 0;
                 integratedIntPerRoi{i,j}(k,1) = 0;
+                maxIntPerRoi{i,j}(k,1) = 0;
                 nSpotsPerRoi{i,j}(k,1) = 0;
                 curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
                 roiVolume{i,j}(k,1) = curRoiVolume;
@@ -287,6 +291,9 @@ for i=1:size(fList,1)
                     sum( spots2(:,nc+1) == roiVals{i,j}(k,1) );
                 integratedIntPerRoi{i,j}(k,1) = ...
                     sum( spots2( spots2(:,nc+1) == ...
+                    roiVals{i,j}(k,1),params.ndims+1 ) );
+                maxIntPerRoi{i,j}(k,1) = ...
+                    max( spots2( spots2(:,nc+1) == ...
                     roiVals{i,j}(k,1),params.ndims+1 ) );
                 nSpotsPerRoi{i,j}(k,1) = nSpotsInCurrentRoi;
                 curRoiVolume = sum( mask(:) == roiVals{i,j}(k,1) );
@@ -307,7 +314,7 @@ end
 saveFileName = fullfile(outDir,'sortSpotsStats.txt');
 
 T = save_batch_sort_spots_results_in_txt(saveFileName,fList,roiVals,...
-    nSpotsPerRoi,integratedIntPerRoi,roiVolume);
+    nSpotsPerRoi,integratedIntPerRoi,maxIntPerRoi,roiVolume);
 
 % save as a cell expression matrix (easier to use in downstream applications)
 saveFileName = fullfile(outDir,'sortSpotsMatrix.txt');
